@@ -1,10 +1,161 @@
 {{>header}}
 
+<!-- Add Fancybox CSS in the head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
+<!-- Add custom CSS for layout -->
+<style>
+    .gallery-section {
+        margin-bottom: 40px;
+    }
+    .year-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 15px;
+    }
+    .gallery-item {
+        position: relative;
+        padding-top: 100%; 
+        overflow: hidden;
+    }
+    .gallery-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+    .gallery-item img:hover {
+        transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+        .gallery-container {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+    @media (max-width: 480px) {
+        .gallery-container {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+    }
+</style>
 
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="about-us-area about-page section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Our Gallery</h2>
+                    <p>A collection of memories from our events and activities</p>
+                </div>
+            </div>
+        </div>
 
+        {{#if images2018.length}}
+        <div class="gallery-section">
+            <h3 class="year-header">2018</h3>
+            <div class="gallery-container">
+                {{#each images2018}}
+                <div class="gallery-item">
+                    <a href="/public/gallery/2018/{{this}}" data-fancybox="gallery-2018" data-caption="Image from 2018">
+                        <img src="/public/gallery/2018/{{this}}" alt="Image from 2018">
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if images2020.length}}
+        <div class="gallery-section">
+            <h3 class="year-header">2020</h3>
+            <div class="gallery-container">
+                {{#each images2020}}
+                <div class="gallery-item">
+                    <a href="/public/gallery/2020/{{this}}" data-fancybox="gallery-2020" data-caption="Image from 2020">
+                        <img src="/public/gallery/2020/{{this}}" alt="Image from 2020">
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if images2021.length}}
+        <div class="gallery-section">
+            <h3 class="year-header">2021</h3>
+            <div class="gallery-container">
+                {{#each images2021}}
+                <div class="gallery-item">
+                    <a href="/public/gallery/2021/{{this}}" data-fancybox="gallery-2021" data-caption="Image from 2021">
+                        <img src="/public/gallery/2021/{{this}}" alt="Image from 2021">
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        
+        {{#if images2022.length}}
+        <div class="gallery-section">
+            <h3 class="year-header">2022</h3>
+            <div class="gallery-container">
+                {{#each images2022}}
+                <div class="gallery-item">
+                    <a href="/public/gallery/2022/{{this}}" data-fancybox="gallery-2022" data-caption="Image from 2022">
+                        <img src="/public/gallery/2022/{{this}}" alt="Image from 2022">
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+    </div>
+</div>
 
 {{>subscribe}}
-
 {{>footer}}
+
+<!-- Add Fancybox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("[data-fancybox]").fancybox({
+            buttons: [
+                "zoom",
+                "share",
+                "slideShow",
+                "fullScreen",
+                "download",
+                "thumbs",
+                "close"
+            ],
+            loop: true,
+            protect: true
+        });
+    });
+</script>
