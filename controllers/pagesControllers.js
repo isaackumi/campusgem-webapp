@@ -46,10 +46,6 @@ router.get('/gallery', async (req, res) => {
         const images2021Sorted = sortImages(filterImages(images2021));
         const images2022Sorted = sortImages(filterImages(images2022));
 
-        console.log('Images 2018:', images2018Sorted);
-        console.log('Images 2020:', images2020Sorted);
-        console.log('Images 2021:', images2021Sorted);
-        console.log('Images 2022:', images2022Sorted);
 
         res.render('gallery', {
             layout: false,
