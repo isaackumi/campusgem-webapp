@@ -19,6 +19,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
 
 </head>
+<style>
+        /* Add these styles to your existing CSS file or in a <style> tag in the head */
+        .classy-nav-container {
+            width: 100%;
+            max-width: none;
+        }
+        .classynav ul {
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .header-btn {
+            margin-left: 15px;
+        }
+        @media (max-width: 1200px) {
+           
+            .classynav ul li a {
+                font-size: 14px;
+            }
+        }
+    </style>
 
 <body>
 
@@ -57,7 +79,7 @@
         <!-- ***** Navbar Area ***** -->
         <div class="crose-main-menu">
             <div class="classy-nav-container breakpoint-off">
-                <div class="container">
+                <div class="container-fluid">
                     <!-- Menu -->
                     <nav class="classy-navbar justify-content-between" id="croseNav">
 
@@ -110,7 +132,7 @@
                                     </li>
                                   
                                     <!-- <li><a href="/sermons">Sermons</a></li> -->
-                                    {{!-- <li><a href="/gallery">Gallery</a></li> --}}
+                                    <li><a href="/gallery">Gallery</a></li>
                                     <li><a href="/contact">Contact</a></li>
                                 </ul>
 
