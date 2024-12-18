@@ -32,6 +32,49 @@ router.get('/funfair',(req, res) => {
     res.render('funfair',{layout:false});
 });
 
+router.get('/hall-of-fame', async (req, res) => {
+    try {
+        const hallOfFamePath = path.join(__dirname, './../public/HallOfFame');
+        
+        const files = await fs.readdir(hallOfFamePath);
+        
+        const imageFiles = files
+            .filter(file => 
+                ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(file).toLowerCase())
+            )
+            .map(file => `/public/HallOfFame/${file}`); 
+        res.render('hall-of-fame', {
+            layout: false,
+            images: imageFiles
+        });
+    } catch (error) {
+        console.error('Error reading Hall of Fame images:', error);
+        res.status(500).send('Error loading Hall of Fame');
+    }
+});
+
+router.get('/cgem-marriages', async (req, res) => {
+    try {
+        const hallOfFamePath = path.join(__dirname, './../public/cgem-marriages');
+        
+        const files = await fs.readdir(hallOfFamePath);
+        
+        const imageFiles = files
+            .filter(file => 
+                ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(file).toLowerCase())
+            )
+            .map(file => `/public/cgem-marriages/${file}`); 
+        res.render('cgem-marriages', {
+            layout: false,
+            images: imageFiles
+        });
+    } catch (error) {
+        console.error('Error reading Hall of Fame images:', error);
+        res.status(500).send('Error loading Hall of Fame');
+    }
+});
+
+
 router.get('/media-team',(req, res) => {
     res.render('media-team',{layout:false});
 });

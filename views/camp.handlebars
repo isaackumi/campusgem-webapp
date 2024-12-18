@@ -1,17 +1,17 @@
     {{> header}}
 
     <div class="breadcrumb">
-        <div class="container breadcrumb-inner">
+        <div class="camp-container breadcrumb-inner">
             <a href="#">Home</a>
             <span>/ Eagles Camp</span>
         </div>
     </div>
 
-    <div class="container">
+    <div class="camp-container">
         <div class="hero-section">
             <div class="hero-content">
-                <h1 class = "header-content">Eagles Camp 2024</h1>
-                <p class = "p-content">Join us for a transformative spiritual experience and growth journey!</p>
+                <h1 class="header-content">Eagles Camp 2024</h1>
+                <p class="p-content">Join us for a transformative spiritual experience and growth journey!</p>
                 
                 <div class="countdown">
                     <div class="countdown-item">
@@ -42,52 +42,41 @@
         </div>
     </div>
 
-    {{> footer}}
+{{> footer}}
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary-color: #c92f2f;
-            --secondary-color: #128C7E;
+            --secondary-color: #0d1d1b;
             --background-light: #f4f4f4;
             --text-light: #ffffff;
+            --bg-color: #1a1a1b;
         }
 
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             background-color: var(--background-light);
-            color: var(--text-light);
+            color: var(--bg-color);
         }
 
-        .header-content{
-            color:var(--text-light)
+        .header-content {
+            color: var(--text-light)
         }
 
-        .p-content{
-            color:var(--text-light)
+        .p-content {
+            color: var(--text-light)
         }
 
-        
-
-
-        .container {
+        .camp-container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Breadcrumb Styling */
         .breadcrumb {
-            background: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: none;
+            padding: 4px 0;
         }
 
         .breadcrumb-inner {
@@ -105,7 +94,6 @@
             color: #888;
         }
 
-        /* Main Content Styling */
         .hero-section {
             display: flex;
             align-items: center;
@@ -166,7 +154,6 @@
             transform: scale(1.05);
         }
 
-        /* Responsive Design */
         @media screen and (max-width: 768px) {
             .hero-section {
                 flex-direction: column;
@@ -196,19 +183,47 @@
 
     <script>
         function updateCountdown() {
-            const eventDate = new Date('December 26, 2024 00:00:00').getTime();
+            const eventStartDate = new Date('December 26, 2024 00:00:00').getTime();
+            const eventEndDate = new Date('December 31, 2024 23:59:59').getTime();
+            const campExpireDate = new Date('January 1, 2025 00:00:00').getTime();
             const now = new Date().getTime();
-            const distance = eventDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const countdownElement = document.querySelector('.countdown');
+            const registerBtn = document.querySelector('.register-btn');
+            const heroImage = document.querySelector('.hero-image');
+            const heroContent = document.querySelector('.hero-content h1');
+            const heroSubtitle = document.querySelector('.hero-content p');
 
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            // If camp is ongoing (26th Dec - 31st Dec)
+            if (now >= eventStartDate && now <= eventEndDate) {
+                countdownElement.innerHTML = '<p style="width:100%; text-align:center; font-size:1.2rem;">Camp Meeting 2024 Happening Live @ Winneba Sec School</p>';
+                registerBtn.disabled = true;
+                registerBtn.style.opacity = '0.5';
+                registerBtn.style.cursor = 'not-allowed';
+                registerBtn.removeAttribute('href');
+            }
+            // If camp has expired (after 1st Jan 2025)
+            else if (now >= campExpireDate) {
+                countdownElement.style.display = 'none';
+                registerBtn.style.display = 'none';
+                heroImage.style.display = 'none';
+                heroContent.textContent = 'Camp Meeting 2024 Concluded';
+                heroSubtitle.textContent = 'Looking Forward to Camp Meeting 2025! Start Preparing Now.';
+            }
+            // Regular countdown before event
+            else {
+                const distance = eventStartDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
         }
 
         updateCountdown();
