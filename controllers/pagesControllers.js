@@ -12,6 +12,26 @@ router.get('/about',(req, res) => {
     res.render('about',{layout:false});
 });
 
+router.get('/camp',(req, res) => {
+    res.render('camp',{layout:false});
+});
+
+router.get('/love-feast',(req, res) => {
+    res.render('love-feast',{layout:false});
+});
+
+router.get('/mentoring-hub',(req, res) => {
+    res.render('mentoring-hub',{layout:false});
+});
+
+router.get('/ict-training',(req, res) => {
+    res.render('ict-training',{layout:false});
+});
+
+router.get('/funfair',(req, res) => {
+    res.render('funfair',{layout:false});
+});
+
 router.get('/media-team',(req, res) => {
     res.render('media-team',{layout:false});
 });

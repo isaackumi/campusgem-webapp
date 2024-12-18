@@ -1,0 +1,98 @@
+
+    {{> header}}
+
+    <div class="coming-soon-wrapper">
+        <div class="particles-container" id="particles-js"></div>
+        <div class="content-overlay">
+            <h1 class = "title">ICT Training</h1>
+            <h2>Coming Soon</h2>
+            <p>We're preparing something extraordinary</p>
+        </div>
+    </div>
+
+    {{> footer}}
+
+    <style>
+        .coming-soon-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #c92f2f, #128C7E);
+            overflow: hidden;
+        }
+
+        .title{
+            color: white
+        }
+
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .content-overlay h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .content-overlay h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .content-overlay p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media screen and (max-width: 768px) {
+            .content-overlay h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-overlay h2 {
+                font-size: 1.8rem;
+            }
+
+            .content-overlay p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' } },
+                modes: { repulse: { distance: 100, duration: 0.4 } }
+            },
+            retina_detect: true
+        });
+    </script>
