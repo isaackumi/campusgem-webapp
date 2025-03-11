@@ -91,6 +91,7 @@ router.get('/gallery', async (req, res) => {
         const images2020 = await fs.readdir(path.join(galleryPath, '2020'));
         const images2021 = await fs.readdir(path.join(galleryPath, '2021'));
         const images2022 = await fs.readdir(path.join(galleryPath, '2022'));
+        const images2023 = await fs.readdir(path.join(galleryPath, '2023'));
 
         const sortImages = (images) => {
             return images.sort((a, b) => {
@@ -108,6 +109,7 @@ router.get('/gallery', async (req, res) => {
         const images2020Sorted = sortImages(filterImages(images2020));
         const images2021Sorted = sortImages(filterImages(images2021));
         const images2022Sorted = sortImages(filterImages(images2022));
+        const images2023Sorted = sortImages(filterImages(images2023));
 
 
         res.render('gallery', {
@@ -115,7 +117,8 @@ router.get('/gallery', async (req, res) => {
             images2018: images2018Sorted,
             images2020: images2020Sorted,
             images2021: images2021Sorted,
-            images2022: images2022Sorted
+            images2022: images2022Sorted,
+            images2023: images2023Sorted
         });
     } catch (error) {
         console.error('Error reading gallery images:', error);
