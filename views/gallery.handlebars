@@ -133,6 +133,21 @@
         </div>
         {{/if}}
 
+        {{#if images2023.length}}
+        <div class="gallery-section">
+            <h3 class="year-header">2023</h3>
+            <div class="gallery-container">
+                {{#each images2023}}
+                <div class="gallery-item">
+                    <a href="/public/gallery/2023/{{this}}" data-fancybox="gallery-2023" data-caption="Image from 2023">
+                        <img src="/public/gallery/2023/{{this}}" alt="Image from 2023">
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
     </div>
 </div>
 
