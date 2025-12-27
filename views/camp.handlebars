@@ -1,4 +1,4 @@
-    {{> header}}
+{{> header}}
 
     <div class="breadcrumb">
         <div class="camp-container breadcrumb-inner">
@@ -10,7 +10,7 @@
     <div class="camp-container">
         <div class="hero-section">
             <div class="hero-content">
-                <h1 class="header-content">Eagles Camp 2024</h1>
+                <h1 class="header-content">Eagles Camp 2025</h1>
                 <p class="p-content">Join us for a transformative spiritual experience and growth journey!</p>
                 
                 <div class="countdown">
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="hero-image">
-                <img src="../../public/img/photos/ec_2024.jpeg" alt="Eagles Camp 2024">
+                <img src="../../public/img/photos/eagles2025.jpg" alt="Eagles Camp 2025">
             </div>
         </div>
     </div>
@@ -183,9 +183,9 @@
 
     <script>
         function updateCountdown() {
-            const eventStartDate = new Date('December 26, 2024 00:00:00').getTime();
-            const eventEndDate = new Date('December 31, 2024 23:59:59').getTime();
-            const campExpireDate = new Date('January 1, 2025 00:00:00').getTime();
+            const eventStartDate = new Date('December 25, 2025 00:00:00').getTime();
+            const eventEndDate = new Date('December 31, 2025 23:59:59').getTime();
+            const campExpireDate = new Date('January 1, 2026 00:00:00').getTime();
             const now = new Date().getTime();
 
             const countdownElement = document.querySelector('.countdown');
@@ -194,21 +194,23 @@
             const heroContent = document.querySelector('.hero-content h1');
             const heroSubtitle = document.querySelector('.hero-content p');
 
-            // If camp is ongoing (26th Dec - 31st Dec)
+            // If camp is ongoing (25th Dec - 31st Dec 2025)
             if (now >= eventStartDate && now <= eventEndDate) {
-                countdownElement.innerHTML = '<p style="width:100%; text-align:center; font-size:1.2rem;">Camp Meeting 2024 Happening Live @ Winneba Sec School</p>';
+                countdownElement.innerHTML = '<p style="width:100%; text-align:center; font-size:1.2rem; color: white; font-weight: bold;">Camp Meeting 2025 In Progress @ Redemption Light Chapel, Heavy Do Junction</p>';
                 registerBtn.disabled = true;
                 registerBtn.style.opacity = '0.5';
                 registerBtn.style.cursor = 'not-allowed';
                 registerBtn.removeAttribute('href');
+                registerBtn.style.color = 'black';
+                registerBtn.textContent = 'Registration Closed';
             }
-            // If camp has expired (after 1st Jan 2025)
+            // If camp has expired (after 1st Jan 2026)
             else if (now >= campExpireDate) {
                 countdownElement.style.display = 'none';
                 registerBtn.style.display = 'none';
                 heroImage.style.display = 'none';
-                heroContent.textContent = 'Camp Meeting 2024 Concluded';
-                heroSubtitle.textContent = 'Looking Forward to Camp Meeting 2025! Start Preparing Now.';
+                heroContent.textContent = 'Camp Meeting 2025 Concluded';
+                heroSubtitle.textContent = 'Looking Forward to Camp Meeting 2026! Start Preparing Now.';
             }
             // Regular countdown before event
             else {
